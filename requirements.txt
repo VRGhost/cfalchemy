@@ -4,3 +4,4 @@ m2r>=0.1.12
 pytest-pep257>=0.0.5
 pytest-rage
 pytest-codecheckers
+pytest-runner>=3.0

@@ -7,6 +7,7 @@ python:
 install:
   - pip install -r requirements.txt
 #  - pip install codeclimate-test-reporter
+  - python setup.py install
   - pip freeze # Print versions of all installed packages for logging purposes
 script:
 #  - py.test -m pep8
