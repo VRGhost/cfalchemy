@@ -41,12 +41,11 @@ setup(
         'Programming Language :: Python :: 3',
     ],
     keywords='aws amazon cloudformation',
-    version='2.0.6',
+    version='0.0.1',
     url='https://github.com/VRGhost/cfalchemy',
     install_requires=[
         'boto3>=1',
         'six>=1.10.0',
-    ],
-    setup_requires=['pytest-runner'],
-    tests_require=['pytest']
+        'cached_property',
+    ]
 )
