@@ -5,9 +5,9 @@ python:
   - "3.6"
 
 install:
-  - pip install -r requirements/develop.txt
-  # - pip install codeclimate-test-reporter
+  - pip install -r requirements.txt
+#  - pip install codeclimate-test-reporter
   - pip freeze # Print versions of all installed packages for logging purposes
 script:
-  - py.test -m pep8
+#  - py.test -m pep8
   - py.test
