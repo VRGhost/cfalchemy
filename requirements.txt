@@ -3,8 +3,10 @@ pytest-cov>=2.5.1
 m2r>=0.1.12
 pytest-pep257>=0.0.5
 pytest-rage
-pytest-codecheckers
+pytest-flake8
 pytest-runner>=3.0
+PyYAML
+mock
 
 cached_property
 boto3

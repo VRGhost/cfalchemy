@@ -1,0 +1,42 @@
+ResponseMetadata:
+  HTTPHeaders: {content-length: '5334', content-type: text/xml, date: 'Wed, 23 May
+      2018 18:21:59 GMT', vary: Accept-Encoding, x-amzn-requestid: 2eb802cc-5eb6-11e8-8fed-db012d14fbc8}
+  HTTPStatusCode: 200
+  RequestId: 2eb802cc-5eb6-11e8-8fed-db012d14fbc8
+  RetryAttempts: 0
+Stacks:
+- Capabilities: [CAPABILITY_IAM]
+  CreationTime: 2018-05-15 13:17:12.829000+00:00
+  DisableRollback: false
+  EnableTerminationProtection: false
+  LastUpdatedTime: 2018-05-21 09:02:52.318000+00:00
+  NotificationARNs: []
+  Outputs:
+  - {Description: Deployment AWS Key ID, OutputKey: DeployKeyId, OutputValue: AKIAJC7FGDRH76UPW3LQ}
+  - {Description: The DNS name for the load balancer, OutputKey: WebUiElbDomain, OutputValue: hello-world-WebUI-GPO0M2OD5PCM-2080951177.eu-central-1.elb.amazonaws.com}
+  - {Description: Deployment Key secret, OutputKey: DeployKeySecret, OutputValue: gkPaObW3xmj9EhbjhJ1UcNdkUTE9DQncB8F9Ouxf}
+  Parameters:
+  - {ParameterKey: SourceS3Bucket, ParameterValue: rex-dev-deploy-eu-central-1}
+  - {ParameterKey: BastionAMIID, ParameterValue: ami-11bb0e7e}
+  - {ParameterKey: PublicSubnet3CIDR, ParameterValue: 10.138.12.0/24}
+  - {ParameterKey: RabbitMQAMIID, ParameterValue: ami-0069d86f}
+  - {ParameterKey: DbSnapshoArn, ParameterValue: 'arn:aws:rds:eu-central-1:424242424242:snapshot:anon-rex-latest'}
+  - {ParameterKey: HTTPSCertificateArn, ParameterValue: 'arn:aws:acm:eu-central-1:424242424242:certificate/a71b897e-2801-49e7-8fac-034ea681241f'}
+  - {ParameterKey: RexWorkerAMIID, ParameterValue: ami-11bb0e7e}
+  - {ParameterKey: AwsServicesSubnet2CIDR, ParameterValue: 10.138.40.0/21}
+  - {ParameterKey: PriveledgedIp, ParameterValue: 217.138.75.112/29}
+  - {ParameterKey: KeyName, ParameterValue: IljasAWSKeypair}
+  - {ParameterKey: PostgresPassword, ParameterValue: E7EaBCATh6HRDr(cVr$XWV}
+  - {ParameterKey: AuthorizedKeys, ParameterValue: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGbeBTnL84NRU03oPmPLq0OB2AGoESMRmckYRybVBdC7IERWz6ky3CQuimPJHe0nszLRKsFa008OKdsM1YGO2z66cJDs3wW6VEfl3ZsZD9ceJmXUbieQDFcIUpOphLdXKqoBaVctzIF5eeLZeusSvcdOPL+50ZUFSEMailxRj9whGPolGaIWKpf0Vw5Z8upYThcMH28oJBancskBbSNYMq0RAUsI7TQhum2Nq2vOmKswXomBZers9+U+lrp2wzw5sP/XcE77FCm0Kg0dcaDYt08kvmN2ES+RG3TR3SmwmW7r4oGh6CqrHq7JfJWqwweSW1Fn6bO1eK31zPsvRCZtzz
+      ilja@Iljas-MacBook-Pro.local}
+  - {ParameterKey: PublicSubnet2CIDR, ParameterValue: 10.138.11.0/24}
+  - {ParameterKey: VpcCIDR, ParameterValue: 10.138.0.0/16}
+  - {ParameterKey: AwsServicesSubnet1CIDR, ParameterValue: 10.138.32.0/21}
+  - {ParameterKey: PublicSubnet1CIDR, ParameterValue: 10.138.10.0/24}
+  - {ParameterKey: AwsServicesSubnet3CIDR, ParameterValue: 10.138.48.0/21}
+  RollbackConfiguration: {}
+  StackId: arn:aws:cloudformation:eu-central-1:424242424242:stack/hello-world/479d5820-1842-12e8-88f7-500c52a6ce62
+  StackName: hello-world
+  StackStatus: UPDATE_COMPLETE
+  Tags:
+  - {Key: CreatedWith, Value: create-stack.sh}
