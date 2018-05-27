@@ -24,8 +24,7 @@ class FakeBoto(object):
         """A context that patches boto3 into a mock"""
         with mock.patch('boto3.client') as boto_client_mock:
             yield {
-                'client': boto_client_mock,
-                'connection': boto_client_mock.return_value
+                'client': boto_client_mock
             }
 
     def load_resoruce(self, *path):
