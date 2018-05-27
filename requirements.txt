@@ -5,7 +5,7 @@ pytest-pep257>=0.0.5
 pytest-rage==0.1
 pytest-flake8==1.0.1
 pytest-runner>=3.0
-PyYAML
+PyYAML==3.12
 mock
 
 cached_property
