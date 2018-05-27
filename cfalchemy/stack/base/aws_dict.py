@@ -2,26 +2,64 @@ import collections
 import contextlib
 import threading
 import logging
+import six
 
 log = logging.getLogger(__name__)
 
 
-class AwsItem(collections.UserDict):
+class AwsItem(collections.MutableMapping):
     """AWS item record"""
 
     def __init__(self, parent_aws, my_key, prop_values):
-        super(AwsItem, self).__init__(prop_values)
+        super(AwsItem, self).__init__()
+        assert isinstance(my_key, six.string_types)
+        assert isinstance(prop_values, dict)
+        self.data = prop_values.copy()
         self.key = my_key
         self._parent_aws = parent_aws
+        self._no_propagate = 0
 
-    def __getattr__(self, item):
-        return self[item]
-
-    def __setattr__(self, key, value):
-        self[key] = value
+    def __getitem__(self, item):
+        return self.data[item]
 
     def __delitem__(self, key):
-        del self[key]
+        if self._no_propagate:
+            del self.data[key]
+        else:
+            new_val = self.copy()
+            with new_val.no_propagate():
+                del new_val[key]
+            self._parent_aws[self.key] = new_val
+
+    def __iter__(self):
+        return iter(self.data)
+
+    def __len__(self):
+        return len(self.data)
+
+    def __setitem__(self, key, value):
+        if self._no_propagate:
+            self.data[key] = value
+        else:
+            new_val = self.copy()
+            with new_val.no_propagate():
+                new_val[key] = value
+            self._parent_aws[self.key] = new_val
+
+    @contextlib.contextmanager
+    def no_propagate(self):
+        self._no_propagate += 1
+        try:
+            yield
+        finally:
+            self._no_propagate -= 1
+
+    def copy(self):
+        return self.__class__(
+            self._parent_aws,
+            self.key,
+            self.data.copy()
+        )
 
 
 class AwsPropsDictComplete(collections.MutableMapping):
@@ -44,8 +82,7 @@ class AwsPropsDictComplete(collections.MutableMapping):
     #       idx 0 = top fo the stack
     dict_thread_stacks = threading.local()
 
-    def __init__(self, name, key_name, getter, setter=None, deleter=None):
-        self.name = name
+    def __init__(self, key_name, getter, setter=None, deleter=None):
         assert isinstance(key_name, str)
         self.key_name = key_name
         assert callable(getter)
@@ -68,6 +105,9 @@ class AwsPropsDictComplete(collections.MutableMapping):
     def __delitem__(self, key):
         self.update(**{key: None})
 
+    def __getitem__(self, key):
+        return self.current_items_view[key]
+
     def __len__(self):
         return len(self.current_items_view)
 
@@ -77,7 +117,14 @@ class AwsPropsDictComplete(collections.MutableMapping):
     def update(self, **params):
         """Update the dictionary. Updating value to 'None' causes for it to be deleted"""
         with self.bulk_update():
-            self.dict_thread_stacks.updates[-1].update(params)
+            aws_params = {}
+            for (name, value) in params.items():
+                if value is not None and not isinstance(value, AwsItem):
+                    # Must be a vanilla dict for new element
+                    value[self.key_name] = name
+                    value = self._mk_aws_item(value)
+                aws_params[name] = value
+            self.dict_thread_stacks.updates[-1].update(aws_params)
 
     @contextlib.contextmanager
     def bulk_update(self):
@@ -111,10 +158,13 @@ class AwsPropsDictComplete(collections.MutableMapping):
                 to_set.append(api_el)
         if to_set and not self.setter:
             raise NotImplementedError('You must provide "setter" to update dict elements.')
+        elif to_set:
+            self.setter(to_set)
+
         if to_delete and not self.deleter:
             raise NotImplementedError('You must provide "delete" to delete elements')
-        self.setter(to_set)
-        self.deleter(to_delete)
+        elif to_delete:
+            self.deleter(to_delete)
         self._remote_item_cache = None  # force remote item reload
 
     @property
