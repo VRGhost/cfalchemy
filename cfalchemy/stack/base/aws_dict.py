@@ -80,7 +80,7 @@ class AwsPropsDictComplete(collections.MutableMapping):
     # This object will contain:
     #  'updates' list of pending updates dicts
     #       idx 0 = top fo the stack
-    dict_thread_stacks = threading.local()
+    dict_thread_stacks = None
 
     def __init__(self, key_name, getter, setter=None, deleter=None):
         assert isinstance(key_name, str)
@@ -89,7 +89,8 @@ class AwsPropsDictComplete(collections.MutableMapping):
         self.getter = getter
         self.setter = setter
         self.deleter = deleter
-        self.dict_thread_stacks.updates = []
+        self.dict_thread_stacks = threading.local()
+        self._mutex = threading.Lock()
 
     def set_setter(self, new_setter):
         assert callable(new_setter)
@@ -124,7 +125,7 @@ class AwsPropsDictComplete(collections.MutableMapping):
                     value[self.key_name] = name
                     value = self._mk_aws_item(value)
                 aws_params[name] = value
-            self.dict_thread_stacks.updates[-1].update(aws_params)
+            self.my_updates[-1].update(aws_params)
 
     @contextlib.contextmanager
     def bulk_update(self):
@@ -191,7 +192,9 @@ class AwsPropsDictComplete(collections.MutableMapping):
         try:
             return self.dict_thread_stacks.updates
         except AttributeError:
-            raise KeyError('Are you trying to update an aws dict created in another thread?')
+            self.dict_thread_stacks.updates = []
+
+        return self.dict_thread_stacks.updates
 
     _remote_item_cache = None
 
