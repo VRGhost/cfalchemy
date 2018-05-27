@@ -10,4 +10,4 @@ mock==2.0.0
 
 cached_property==1.4.2
 boto3==1.7.28
-six
+six==1.11.0
