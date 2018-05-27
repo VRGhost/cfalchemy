@@ -6,7 +6,7 @@ pytest-rage==0.1
 pytest-flake8==1.0.1
 pytest-runner>=3.0
 PyYAML==3.12
-mock
+mock==2.0.0
 
 cached_property
 boto3
