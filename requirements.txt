@@ -8,6 +8,6 @@ pytest-runner>=3.0
 PyYAML==3.12
 mock==2.0.0
 
-cached_property
+cached_property==1.4.2
 boto3
 six
