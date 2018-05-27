@@ -4,6 +4,8 @@ import collections
 
 import cfalchemy.stack
 
+class RegistryConfigionError(Exception):
+    """Generic registry configuration error"""
 
 class CFAlchemyResourceRegistry(collections.Mapping):
 
@@ -11,16 +13,22 @@ class CFAlchemyResourceRegistry(collections.Mapping):
 
     def __init__(self):
         _registry = {}
-        for cls in (
-            cfalchemy.stack.cloud_formation.Stack,
-        ):
+        for cls in self._iter_all_cf_classes():
             resource_type = cls.resource_type
             if resource_type in _registry:
-                raise Exception('Duplicate resource type {!r}'.format(resource_type))
+                raise RegistryConfigionError('Duplicate resource type {!r}'.format(resource_type))
             if not resource_type.startswith('AWS::'):
-                raise Exception('Unexpected resource type {!r}'.format(resource_type))
+                raise RegistryConfigionError('Unexpected resource type {!r}'.format(resource_type))
             _registry[resource_type] = cls
         self._registry = _registry
+
+
+    @staticmethod
+    def _iter_all_cf_classes():
+        """This method just returns a list of all CF class objects known to the cfalchemy library"""
+        return (
+            cfalchemy.stack.cloud_formation.Stack,
+        )
 
     def __getitem__(self, name):
         return self._registry[name]
