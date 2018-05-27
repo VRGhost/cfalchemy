@@ -6,9 +6,10 @@ python:
 
 install:
   - pip install -r requirements.txt
-#  - pip install codeclimate-test-reporter
+  - pip install codeclimate-test-reporter
   - python setup.py install
   - pip freeze # Print versions of all installed packages for logging purposes
 script:
-#  - py.test -m pep8
   - py.test
+after_success:
+  - codeclimate-test-reporter --token 9a6c5519f9c78ba5d3bb6691d521b3dea4d0e7e4d658c6b29ad835a6f64f62cf
