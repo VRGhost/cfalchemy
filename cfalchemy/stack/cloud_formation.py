@@ -12,6 +12,7 @@ class Stack(base.Base):
     resource_type = 'AWS::CloudFormation::Stack'
 
     def __init__(self, name, registry, boto_kwargs):
+        super(Stack, self).__init__()
         self._input_name = name
         self.registry = registry
         self._boto_kwargs = dict(boto_kwargs)

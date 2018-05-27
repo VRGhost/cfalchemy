@@ -1,10 +1,10 @@
 """Base class for all AWS resources"""
+from abc import ABC, abstractmethod
+
 import logging
 import functools
 import threading
 from cached_property import cached_property as orig_cached_prop
-
-from abc import ABC, abstractmethod
 
 log = logging.getLogger(__name__)
 
