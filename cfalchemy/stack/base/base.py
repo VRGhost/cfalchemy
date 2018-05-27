@@ -1,5 +1,5 @@
 """Base class for all AWS resources"""
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 
 import logging
 import functools
@@ -9,7 +9,8 @@ from cached_property import cached_property as orig_cached_prop
 log = logging.getLogger(__name__)
 
 
-class Base(ABC):
+class Base(object):
+    __metaclass__ = ABCMeta
 
     resource_type = "<Override with AWS resource type>"
     _cached_properties = None
