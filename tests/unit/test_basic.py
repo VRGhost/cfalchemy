@@ -18,3 +18,4 @@ def test_stack_can_be_constructed(fake_boto3):
     # accessing .name should trigger a boto call
     assert stack.name == 'hello-world'
     assert mocks['connection'].describe_stacks.called
+    assert stack.aws_account_id == '424242424242'
