@@ -2,6 +2,7 @@
 
 import cfalchemy.resource_registry
 
+
 def client(stack_name, **boto_kwargs):
     """Open AWS stack connection"""
     registry = cfalchemy.resource_registry.CFAlchemyResourceRegistry()

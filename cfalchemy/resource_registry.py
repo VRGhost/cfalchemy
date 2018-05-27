@@ -4,8 +4,10 @@ import collections
 
 import cfalchemy.stack
 
+
 class RegistryConfigionError(Exception):
     """Generic registry configuration error"""
+
 
 class CFAlchemyResourceRegistry(collections.Mapping):
 
@@ -21,7 +23,6 @@ class CFAlchemyResourceRegistry(collections.Mapping):
                 raise RegistryConfigionError('Unexpected resource type {!r}'.format(resource_type))
             _registry[resource_type] = cls
         self._registry = _registry
-
 
     @staticmethod
     def _iter_all_cf_classes():

@@ -22,7 +22,6 @@ class Stack(base.Base):
 
     @cached_property
     def describe(self):
-        print(self.conn.describe_stacks)
         return self.conn.describe_stacks(StackName=self._input_name)['Stacks'][0]
 
     @property
