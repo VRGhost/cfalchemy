@@ -4,6 +4,25 @@ import mock
 import cfalchemy.stack.base.aws_dict as aws_dict
 
 
+def unordered_equal(list1, list2):
+    list1 = tuple(list1)
+    list2 = tuple(list2)
+    for any_el in (list1 + list2):
+        if not any(
+            any_el == l1_el
+            for l1_el in list1
+        ):
+            print("{!r} not present in {}".format(any_el, list1))
+            return False
+        if not any(
+            any_el == l2_el
+            for l2_el in list2
+        ):
+            print("{!r} not present in {}".format(any_el, list2))
+            return False
+    return True
+
+
 class TestAwsPropsDictComplete:
 
     def default_getter(self):
@@ -50,8 +69,13 @@ class TestAwsPropsDictComplete:
             tested['val1']['PropEl'] = "Updated!"
             tested['val2']['PropEl'] = "Updated! 2"
             tested['val4']['PropEl'] = "Updated! 4"
-        setter.assert_called_with([
-            {'KeyEl': 'val1', 'ValEl': 'val1', 'PropEl': "Updated!"},
-            {'KeyEl': 'val2', 'ValEl': 'val2', 'PropEl': "Updated! 2"},
-            {'KeyEl': 'val4', 'ValEl': 'val4', 'PropEl': "Updated! 4"}
-        ])
+
+        setter.assert_called_once()
+        assert unordered_equal(
+            setter.call_args[0][0],
+            [
+                {'KeyEl': 'val1', 'ValEl': 'val1', 'PropEl': "Updated!"},
+                {'KeyEl': 'val2', 'ValEl': 'val2', 'PropEl': "Updated! 2"},
+                {'KeyEl': 'val4', 'ValEl': 'val4', 'PropEl': "Updated! 4"}
+            ]
+        )
