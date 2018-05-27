@@ -22,7 +22,6 @@ class Stack(base.Base):
 
     @cached_property
     def describe(self):
-        print('describe_fn=', self.conn.describe_stacks)
         return self.conn.describe_stacks(StackName=self._input_name)['Stacks'][0]
 
     @property
@@ -55,3 +54,7 @@ class Stack(base.Base):
     @property
     def uuid(self):
         return uuid.UUID(self._parsed_stack_id[3])
+
+    @property
+    def capabilities(self):
+        return tuple(self.describe['Capabilities'])

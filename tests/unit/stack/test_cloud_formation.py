@@ -14,3 +14,5 @@ def test_props(default_fake_aws_env):
         assert stack.aws_account_id == '424242424242'
         assert stack.name == 'hello-world'
         assert stack.uuid == uuid.UUID('479d5820-1842-12e8-88f7-500c52a6ce62')
+
+        assert stack.capabilities == ('CAPABILITY_IAM', )
