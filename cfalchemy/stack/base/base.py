@@ -1,5 +1,5 @@
 """Base class for all AWS resources"""
-from abc import ABCMeta, abstractmethod
+from abc import ABCMeta, abstractproperty
 
 import logging
 import functools
@@ -9,7 +9,7 @@ from cached_property import cached_property as orig_cached_prop
 log = logging.getLogger(__name__)
 
 
-class Base(object):
+class Base:
     __metaclass__ = ABCMeta
 
     resource_type = "<Override with AWS resource type>"
@@ -20,8 +20,7 @@ class Base(object):
         self._lock = threading.Lock()
         self._cached_properties = set()
 
-    @property
-    @abstractmethod
+    @abstractproperty
     def cfalchemy_uuid(self):
         """This property should return an unique string for each resource in the stack"""
         raise NotImplementedError

@@ -6,11 +6,6 @@ import pytest
 import cfalchemy.stack.base
 
 
-def test_abc_explodes():
-    with pytest.raises(TypeError):
-        cfalchemy.stack.base.Base()
-
-
 class BoundUUidBase(cfalchemy.stack.base.Base):
 
     def __init__(self, uuid):
