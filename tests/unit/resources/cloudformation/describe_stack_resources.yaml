@@ -1,0 +1,402 @@
+ResponseMetadata:
+  HTTPHeaders: {content-length: '52639', content-type: text/xml, date: 'Mon, 28 May
+      2018 10:33:20 GMT', vary: Accept-Encoding, x-amzn-requestid: 8ac9ad4c-6262-11e8-a10e-b7c3e01ca632}
+  HTTPStatusCode: 200
+  RequestId: 8ac9ad4c-6262-11e8-a10e-b7c3e01ca632
+  RetryAttempts: 0
+!!python/unicode 'StackResources':
+- {!!python/unicode 'LogicalResourceId': AWSSubnet1, !!python/unicode 'PhysicalResourceId': subnet-6affd201,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::Subnet',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:54.741000+00:00'}
+- {!!python/unicode 'LogicalResourceId': AWSSubnet2, !!python/unicode 'PhysicalResourceId': subnet-f82ab185,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::Subnet',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:54.254000+00:00'}
+- {!!python/unicode 'LogicalResourceId': AWSSubnet3, !!python/unicode 'PhysicalResourceId': subnet-c76a1c8a,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::Subnet',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:54.260000+00:00'}
+- {!!python/unicode 'LogicalResourceId': AllowAllPrivateTrafficSecurityGroup, !!python/unicode 'PhysicalResourceId': sg-93644cfe,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::SecurityGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:40.039000+00:00'}
+- {!!python/unicode 'LogicalResourceId': AllowEgressOfAllTrafficSecurityGroup, !!python/unicode 'PhysicalResourceId': sg-c02312ad,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::SecurityGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-18
+    17:11:06.128000+00:00'}
+- {!!python/unicode 'LogicalResourceId': Bastion, !!python/unicode 'PhysicalResourceId': i-007d05f94c3bb8027,
+  !!python/unicode 'ResourceStatus': UPDATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::Instance',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-18
+    17:11:39.480000+00:00'}
+- {!!python/unicode 'LogicalResourceId': BastionIAMProfile, !!python/unicode 'PhysicalResourceId': sooty-BastionIAMProfile-YE5WTI2CTOFC,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::IAM::InstanceProfile',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:19:39.302000+00:00'}
+- {!!python/unicode 'LogicalResourceId': BastionIAMRole, !!python/unicode 'PhysicalResourceId': sooty-BastionIAMRole-17ZHIAS18DT59,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::IAM::Role',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:35.137000+00:00'}
+- {!!python/unicode 'LogicalResourceId': BastionIp, !!python/unicode 'PhysicalResourceId': 18.184.85.218,
+  !!python/unicode 'ResourceStatus': UPDATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::EIP',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-18
+    17:12:15.487000+00:00'}
+- {!!python/unicode 'LogicalResourceId': CacheSubnetGroup, !!python/unicode 'PhysicalResourceId': sooty-cache-189p3on2rhxg,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::ElastiCache::SubnetGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:59.900000+00:00'}
+- {!!python/unicode 'LogicalResourceId': CeleryOrchestratorASG, !!python/unicode 'PhysicalResourceId': sooty-CeleryOrchestratorASG-1L45ECBL8VLZY,
+  !!python/unicode 'ResourceStatus': UPDATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::AutoScaling::AutoScalingGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-18
+    17:11:18.039000+00:00'}
+- {!!python/unicode 'LogicalResourceId': CeleryOrchestratorDeploymentConfig, !!python/unicode 'PhysicalResourceId': sooty-CeleryOrchestratorDeploymentConfig-1TRX9641GL9IB,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::CodeDeploy::DeploymentConfig',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:17.939000+00:00'}
+- {!!python/unicode 'LogicalResourceId': CeleryOrchestratorDeploymentGroup, !!python/unicode 'PhysicalResourceId': sooty-CeleryOrchestratorDeploymentGroup-1S4YOQPL9BSMB,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::CodeDeploy::DeploymentGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:27:14.827000+00:00'}
+- {!!python/unicode 'LogicalResourceId': CeleryWorkerASG, !!python/unicode 'PhysicalResourceId': sooty-CeleryWorkerASG-15K0BXYH7RC8L,
+  !!python/unicode 'ResourceStatus': UPDATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::AutoScaling::AutoScalingGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-18
+    17:11:17.574000+00:00'}
+- {!!python/unicode 'LogicalResourceId': CeleryWorkerCPUAlarmHigh, !!python/unicode 'PhysicalResourceId': sooty-CeleryWorkerCPUAlarmHigh-13CI4H1Q261FG,
+  !!python/unicode 'ResourceStatus': UPDATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::CloudWatch::Alarm',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-18
+    17:11:28.053000+00:00'}
+- {!!python/unicode 'LogicalResourceId': CeleryWorkerCPUAlarmLow, !!python/unicode 'PhysicalResourceId': sooty-CeleryWorkerCPUAlarmLow-DYOHQBR3UPT9,
+  !!python/unicode 'ResourceStatus': UPDATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::CloudWatch::Alarm',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-18
+    17:11:27.775000+00:00'}
+- {!!python/unicode 'LogicalResourceId': CeleryWorkerDeploymentConfig, !!python/unicode 'PhysicalResourceId': sooty-CeleryWorkerDeploymentConfig-Z9GG53KCEGLH,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::CodeDeploy::DeploymentConfig',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:18.581000+00:00'}
+- {!!python/unicode 'LogicalResourceId': CeleryWorkerDeploymentGroup, !!python/unicode 'PhysicalResourceId': sooty-CeleryWorkerDeploymentGroup-1RIISDYA1P8X7,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::CodeDeploy::DeploymentGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:27:15.234000+00:00'}
+- {!!python/unicode 'LogicalResourceId': CeleryWorkerSNSTopic, !!python/unicode 'PhysicalResourceId': 'arn:aws:sns:eu-central-1:424242424242:sooty-CeleryWorkerSNSTopic-8K9M49SHW43E',
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::SNS::Topic',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:28.275000+00:00'}
+- {!!python/unicode 'LogicalResourceId': CeleryWorkerScaleDownPolicy, !!python/unicode 'PhysicalResourceId': 'arn:aws:autoscaling:eu-central-1:424242424242:scalingPolicy:11eca04b-346c-4641-8398-b9a48a72dc3e:autoScalingGroupName/sooty-CeleryWorkerASG-15K0BXYH7RC8L:policyName/sooty-CeleryWorkerScaleDownPolicy-1MKXUIGPNWXUT',
+  !!python/unicode 'ResourceStatus': UPDATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::AutoScaling::ScalingPolicy',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-18
+    17:11:24.066000+00:00'}
+- {!!python/unicode 'LogicalResourceId': CeleryWorkerScaleUpPolicy, !!python/unicode 'PhysicalResourceId': 'arn:aws:autoscaling:eu-central-1:424242424242:scalingPolicy:7c9903ef-02e9-4747-9064-557eb7330c62:autoScalingGroupName/sooty-CeleryWorkerASG-15K0BXYH7RC8L:policyName/sooty-CeleryWorkerScaleUpPolicy-1M746WZ9XJ4BJ',
+  !!python/unicode 'ResourceStatus': UPDATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::AutoScaling::ScalingPolicy',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-18
+    17:11:24.152000+00:00'}
+- {!!python/unicode 'LogicalResourceId': CloudWatchDataGeneratorPolicy, !!python/unicode 'PhysicalResourceId': sooty-Clou-1NU31NXYDKPBE,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::IAM::Policy',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:49.264000+00:00'}
+- {!!python/unicode 'LogicalResourceId': CodeDeploymentRole, !!python/unicode 'PhysicalResourceId': sooty-CodeDeploymentRole-14XR0GV8M8YHH,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::IAM::Role',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:35.524000+00:00'}
+- {!!python/unicode 'LogicalResourceId': DataConsumersASG, !!python/unicode 'PhysicalResourceId': sooty-DataConsumersASG-1SRU3JAOPMYMD,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::AutoScaling::AutoScalingGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-21
+    09:03:51.637000+00:00'}
+- {!!python/unicode 'LogicalResourceId': DataConsumersDeploymentGroup, !!python/unicode 'PhysicalResourceId': sooty-DataConsumersDeploymentGroup-TQTYNZW8MMYU,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::CodeDeploy::DeploymentGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-21
+    09:04:59.119000+00:00'}
+- {!!python/unicode 'LogicalResourceId': DataProducersASG, !!python/unicode 'PhysicalResourceId': sooty-DataProducersASG-1LV76CQ27UDDE,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::AutoScaling::AutoScalingGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-21
+    09:03:55.601000+00:00'}
+- {!!python/unicode 'LogicalResourceId': DataProducersDeploymentGroup, !!python/unicode 'PhysicalResourceId': sooty-DataProducersDeploymentGroup-V4REOGEIVEO,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::CodeDeploy::DeploymentGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-21
+    09:05:02.929000+00:00'}
+- {!!python/unicode 'LogicalResourceId': DataProducersTargetGroup, !!python/unicode 'PhysicalResourceId': 'arn:aws:elasticloadbalancing:eu-central-1:424242424242:targetgroup/sooty-DataP-23O6EW7A2YA/a379686ab662597c',
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::ElasticLoadBalancingV2::TargetGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-21
+    09:02:59.020000+00:00'}
+- {!!python/unicode 'LogicalResourceId': Database, !!python/unicode 'PhysicalResourceId': sdb6e3j9i18bep,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::RDS::DBInstance',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:26:36.005000+00:00'}
+- {!!python/unicode 'LogicalResourceId': DbSubnetGroup, !!python/unicode 'PhysicalResourceId': sooty-dbsubnetgroup-io1xds5ud6i5,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::RDS::DBSubnetGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:59.738000+00:00'}
+- {!!python/unicode 'LogicalResourceId': DefaultPublicRoute, !!python/unicode 'PhysicalResourceId': sooty-Defau-7SNZ81N7QE5G,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::Route',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:18:14.243000+00:00'}
+- {!!python/unicode 'LogicalResourceId': DeployKey, !!python/unicode 'PhysicalResourceId': AKIAJC7FGDRH76UPW3LQ,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::IAM::AccessKey',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:58.921000+00:00'}
+- {!!python/unicode 'LogicalResourceId': DeployUser, !!python/unicode 'PhysicalResourceId': sooty-DeployUser-I741L6JEF3KY,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::IAM::User',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:54.141000+00:00'}
+- {!!python/unicode 'LogicalResourceId': DevToolsASG, !!python/unicode 'PhysicalResourceId': sooty-DevToolsASG-199RU6P9O1375,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::AutoScaling::AutoScalingGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-18
+    17:12:06.572000+00:00'}
+- {!!python/unicode 'LogicalResourceId': DevToolsDeploymentGroup, !!python/unicode 'PhysicalResourceId': sooty-DevToolsDeploymentGroup-YH8754KYWCOB,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::CodeDeploy::DeploymentGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-18
+    17:13:46.168000+00:00'}
+- {!!python/unicode 'LogicalResourceId': DevToolsInstanceLaunchConfig, !!python/unicode 'PhysicalResourceId': sooty-DevToolsInstanceLaunchConfig-1RS4F6JY5F93M,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::AutoScaling::LaunchConfiguration',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-18
+    17:11:10.383000+00:00'}
+- {!!python/unicode 'LogicalResourceId': ElasticSearch, !!python/unicode 'PhysicalResourceId': sooty-elastics-1bojhukwqi2xo,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::Elasticsearch::Domain',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:31:06.897000+00:00'}
+- {!!python/unicode 'LogicalResourceId': InternetGateway, !!python/unicode 'PhysicalResourceId': igw-beb4fbd6,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::InternetGateway',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:33.377000+00:00'}
+- {!!python/unicode 'LogicalResourceId': InternetGatewayAttachment, !!python/unicode 'PhysicalResourceId': sooty-Inter-1H0T1H8UWOBAG,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::VPCGatewayAttachment',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:53.918000+00:00'}
+- {!!python/unicode 'LogicalResourceId': LogGroup, !!python/unicode 'PhysicalResourceId': sooty-LogGroup-160XHL8E2RABR,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::Logs::LogGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:18.766000+00:00'}
+- {!!python/unicode 'LogicalResourceId': Memcached, !!python/unicode 'PhysicalResourceId': soo-me-12n2fe900h2ip,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::ElastiCache::CacheCluster',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:22:06.143000+00:00'}
+- {!!python/unicode 'LogicalResourceId': PublicRouteTable, !!python/unicode 'PhysicalResourceId': rtb-97aa4afd,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::RouteTable',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:39.515000+00:00'}
+- {!!python/unicode 'LogicalResourceId': PublicSSHSecurityGroup, !!python/unicode 'PhysicalResourceId': sg-3e644c53,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::SecurityGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:40.071000+00:00'}
+- {!!python/unicode 'LogicalResourceId': PublicSubnet1, !!python/unicode 'PhysicalResourceId': subnet-dfffd2b4,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::Subnet',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:53.836000+00:00'}
+- {!!python/unicode 'LogicalResourceId': PublicSubnet1RouteTableAssociation, !!python/unicode 'PhysicalResourceId': rtbassoc-f37c6199,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::SubnetRouteTableAssociation',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:18:13.558000+00:00'}
+- {!!python/unicode 'LogicalResourceId': PublicSubnet2, !!python/unicode 'PhysicalResourceId': subnet-f92ab184,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::Subnet',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:53.422000+00:00'}
+- {!!python/unicode 'LogicalResourceId': PublicSubnet2RouteTableAssociation, !!python/unicode 'PhysicalResourceId': rtbassoc-997c61f3,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::SubnetRouteTableAssociation',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:18:12.962000+00:00'}
+- {!!python/unicode 'LogicalResourceId': PublicSubnet3, !!python/unicode 'PhysicalResourceId': subnet-026b1d4f,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::Subnet',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:54.067000+00:00'}
+- {!!python/unicode 'LogicalResourceId': PublicSubnet3RouteTableAssociation, !!python/unicode 'PhysicalResourceId': rtbassoc-0a7e6360,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::SubnetRouteTableAssociation',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:18:14.669000+00:00'}
+- {!!python/unicode 'LogicalResourceId': PublicWebSecurityGroup, !!python/unicode 'PhysicalResourceId': sg-c9644ca4,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::SecurityGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:39.757000+00:00'}
+- {!!python/unicode 'LogicalResourceId': RabbitMq, !!python/unicode 'PhysicalResourceId': i-02dbbd53dbb355b05,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::Instance',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:20:16.237000+00:00'}
+- {!!python/unicode 'LogicalResourceId': ReportFsMountTargetPublic1, !!python/unicode 'PhysicalResourceId': fsmt-16ae574f,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EFS::MountTarget',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:20:31.974000+00:00'}
+- {!!python/unicode 'LogicalResourceId': ReportFsMountTargetPublic2, !!python/unicode 'PhysicalResourceId': fsmt-17ae574e,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EFS::MountTarget',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:20:31.058000+00:00'}
+- {!!python/unicode 'LogicalResourceId': ReportFsMountTargetPublic3, !!python/unicode 'PhysicalResourceId': fsmt-09ae5750,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EFS::MountTarget',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:20:32.229000+00:00'}
+- {!!python/unicode 'LogicalResourceId': RexApplication, !!python/unicode 'PhysicalResourceId': sooty-RexApplication-1LU68ITC657XC,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::CodeDeploy::Application',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:17.774000+00:00'}
+- {!!python/unicode 'LogicalResourceId': RexDevToolsApplication, !!python/unicode 'PhysicalResourceId': sooty-RexDevToolsApplication-H50TSZQIKBRN,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::CodeDeploy::Application',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-18
+    17:11:03.492000+00:00'}
+- {!!python/unicode 'LogicalResourceId': RexSharedFS, !!python/unicode 'PhysicalResourceId': fs-43cd301a,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EFS::FileSystem',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:48.785000+00:00'}
+- {!!python/unicode 'LogicalResourceId': RexWebUIDeploymentConfig, !!python/unicode 'PhysicalResourceId': sooty-RexWebUIDeploymentConfig-1ROLUTXDWFV65,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::CodeDeploy::DeploymentConfig',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:18.742000+00:00'}
+- {!!python/unicode 'LogicalResourceId': RexWorkerLaunchConfig, !!python/unicode 'PhysicalResourceId': sooty-RexWorkerLaunchConfig-1LMNRH4DXKT3M,
+  !!python/unicode 'ResourceStatus': UPDATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::AutoScaling::LaunchConfiguration',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-18
+    17:11:13.433000+00:00'}
+- {!!python/unicode 'LogicalResourceId': SharedCfnInit, !!python/unicode 'PhysicalResourceId': sooty-SharedCfnInit-AHTJU6H77F4Q,
+  !!python/unicode 'ResourceStatus': UPDATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::AutoScaling::LaunchConfiguration',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-16
+    09:20:45.752000+00:00'}
+- {!!python/unicode 'LogicalResourceId': ThisStackConfigBucketReaderPolicy, !!python/unicode 'PhysicalResourceId': sooty-This-WE3NUBMO07E2,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::IAM::Policy',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:18:08.989000+00:00'}
+- {!!python/unicode 'LogicalResourceId': ThisStackQueryPolicy, !!python/unicode 'PhysicalResourceId': sooty-This-6FJMY4J5GDBV,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::IAM::Policy',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:18:08.509000+00:00'}
+- {!!python/unicode 'LogicalResourceId': VPC, !!python/unicode 'PhysicalResourceId': vpc-5aa2d531,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::EC2::VPC',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:34.050000+00:00'}
+- {!!python/unicode 'LogicalResourceId': WebUIASG, !!python/unicode 'PhysicalResourceId': sooty-WebUIASG-16FL6DJCFA99F,
+  !!python/unicode 'ResourceStatus': UPDATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::AutoScaling::AutoScalingGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-18
+    17:11:17.339000+00:00'}
+- {!!python/unicode 'LogicalResourceId': WebUICPUAlarmHigh, !!python/unicode 'PhysicalResourceId': sooty-WebUICPUAlarmHigh-1FRXHZEQNEPTQ,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::CloudWatch::Alarm',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:20:49.909000+00:00'}
+- {!!python/unicode 'LogicalResourceId': WebUICPUAlarmLow, !!python/unicode 'PhysicalResourceId': sooty-WebUICPUAlarmLow-1OQ061TCY6LEY,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::CloudWatch::Alarm',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:20:49.506000+00:00'}
+- {!!python/unicode 'LogicalResourceId': WebUIDNS, !!python/unicode 'PhysicalResourceId': sooty.rsrchx.black,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::Route53::RecordSet',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-16
+    09:21:48.239000+00:00'}
+- {!!python/unicode 'LogicalResourceId': WebUIDataProducersRule, !!python/unicode 'PhysicalResourceId': 'arn:aws:elasticloadbalancing:eu-central-1:424242424242:listener-rule/app/sooty-WebUI-GPO0M2OD5PCM/b7f819ac4e32ded6/0f0822b71fd0e78a/a5bae3ef40432fa9',
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::ElasticLoadBalancingV2::ListenerRule',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-21
+    09:03:02.943000+00:00'}
+- {!!python/unicode 'LogicalResourceId': WebUIDeploymentGroup, !!python/unicode 'PhysicalResourceId': sooty-WebUIDeploymentGroup-5ZSWE4GORGT4,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::CodeDeploy::DeploymentGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:27:14.053000+00:00'}
+- {!!python/unicode 'LogicalResourceId': WebUIELB, !!python/unicode 'PhysicalResourceId': 'arn:aws:elasticloadbalancing:eu-central-1:424242424242:loadbalancer/app/sooty-WebUI-GPO0M2OD5PCM/b7f819ac4e32ded6',
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::ElasticLoadBalancingV2::LoadBalancer',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:19:59.919000+00:00'}
+- {!!python/unicode 'LogicalResourceId': WebUISNSTopic, !!python/unicode 'PhysicalResourceId': 'arn:aws:sns:eu-central-1:424242424242:sooty-WebUISNSTopic-DLJSJVVS548K',
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::SNS::Topic',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:28.400000+00:00'}
+- {!!python/unicode 'LogicalResourceId': WebUIScaleDownPolicy, !!python/unicode 'PhysicalResourceId': 'arn:aws:autoscaling:eu-central-1:424242424242:scalingPolicy:59c62279-9204-4d84-95ee-bd9800f9d8f9:autoScalingGroupName/sooty-WebUIASG-16FL6DJCFA99F:policyName/sooty-WebUIScaleDownPolicy-FP27PHOG8115',
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::AutoScaling::ScalingPolicy',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:20:45.622000+00:00'}
+- {!!python/unicode 'LogicalResourceId': WebUIScaleUpPolicy, !!python/unicode 'PhysicalResourceId': 'arn:aws:autoscaling:eu-central-1:424242424242:scalingPolicy:ce13eda8-4ff8-405d-a2cb-03bce460a7f1:autoScalingGroupName/sooty-WebUIASG-16FL6DJCFA99F:policyName/sooty-WebUIScaleUpPolicy-4X9FHKPM8BRX',
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::AutoScaling::ScalingPolicy',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:20:46.063000+00:00'}
+- {!!python/unicode 'LogicalResourceId': WebUiHTTPListener, !!python/unicode 'PhysicalResourceId': 'arn:aws:elasticloadbalancing:eu-central-1:424242424242:listener/app/sooty-WebUI-GPO0M2OD5PCM/b7f819ac4e32ded6/65cee0e30dbe4971',
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::ElasticLoadBalancingV2::Listener',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-21
+    09:02:58.682000+00:00'}
+- {!!python/unicode 'LogicalResourceId': WebUiHTTPSListener, !!python/unicode 'PhysicalResourceId': 'arn:aws:elasticloadbalancing:eu-central-1:424242424242:listener/app/sooty-WebUI-GPO0M2OD5PCM/b7f819ac4e32ded6/0f0822b71fd0e78a',
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::ElasticLoadBalancingV2::Listener',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-16
+    12:05:04.397000+00:00'}
+- {!!python/unicode 'LogicalResourceId': WebUiHTTPSListenerCertificate, !!python/unicode 'PhysicalResourceId': sooty-WebUi-1MGSJ46T7XMID,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::ElasticLoadBalancingV2::ListenerCertificate',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-16
+    12:05:08.863000+00:00'}
+- {!!python/unicode 'LogicalResourceId': WebUiTargetGroup, !!python/unicode 'PhysicalResourceId': 'arn:aws:elasticloadbalancing:eu-central-1:424242424242:targetgroup/sooty-WebUi-7UD74NHCMDO2/74152f22598dc19a',
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::ElasticLoadBalancingV2::TargetGroup',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:38.414000+00:00'}
+- {!!python/unicode 'LogicalResourceId': WorkerInstanceProfile, !!python/unicode 'PhysicalResourceId': sooty-WorkerInstanceProfile-1EVH18WOSHH3Z,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::IAM::InstanceProfile',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:19:39.360000+00:00'}
+- {!!python/unicode 'LogicalResourceId': WorkerInstanceRole, !!python/unicode 'PhysicalResourceId': sooty-WorkerInstanceRole-EDYCLZ12EKPH,
+  !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::IAM::Role',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
+    13:17:34.505000+00:00'}

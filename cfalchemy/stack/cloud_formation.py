@@ -2,9 +2,34 @@
 import re
 import boto3
 import uuid
-from cached_property import cached_property
 
 from . import base
+
+
+class StackResource(object):
+
+    def __init__(self, stack, aws_data):
+        self.stack = stack
+        self.data = aws_data
+
+    @property
+    def status(self):
+        return self.data['ResourceStatus']
+
+    @property
+    def type(self):
+        return self.data['ResourceType']
+
+    @property
+    def logical_id(self):
+        return self.data['LogicalResourceId']
+
+    @property
+    def physical_id(self):
+        return self.data['PhysicalResourceId']
+
+    def __repr__(self):
+        return "<{} data={}>".format(self.__class__.__name__, self.data)
 
 
 class Stack(base.Base):
@@ -21,15 +46,19 @@ class Stack(base.Base):
     def boto_client(self, module):
         return boto3.client(module, **self._boto_kwargs)
 
-    @cached_property
-    def describe(self):
+    @base.Base.cached_property
+    def aws_describe(self):
         return self.conn.describe_stacks(StackName=self._input_name)['Stacks'][0]
+
+    @base.Base.cached_property
+    def aws_resources(self):
+        return self.conn.describe_stack_resources(StackName=self.name)['StackResources']
 
     @property
     def stack_id(self):
-        return self.describe['StackId']
+        return self.aws_describe['StackId']
 
-    @cached_property
+    @base.Base.cached_property
     def _parsed_stack_id(self):
         return re.match(
             r'^arn:aws:cloudformation:([\w-]+):(\d+):stack/([\w_-]+)/([a-z\d-]+)$',
@@ -38,7 +67,7 @@ class Stack(base.Base):
 
     @property
     def cfalchemy_uuid(self):
-        return self.describe['StackId']
+        return self.aws_describe['StackId']
 
     @property
     def region(self):
@@ -58,4 +87,36 @@ class Stack(base.Base):
 
     @property
     def capabilities(self):
-        return tuple(self.describe['Capabilities'])
+        return tuple(self.aws_describe['Capabilities'])
+
+    @property
+    def status(self):
+        return self.aws_describe['StackStatus']
+
+    @base.Base.cached_property
+    def outputs(self):
+        return base.AwsDict(
+            'OutputKey', 'OutputValue',
+            getter=lambda: self.aws_describe['Outputs']
+        )
+
+    @base.Base.cached_property
+    def parameters(self):
+        return base.AwsDict(
+            'ParameterKey', 'ParameterValue',
+            getter=lambda: self.aws_describe['Parameters']
+        )
+
+    @base.Base.cached_property
+    def tags(self):
+        return base.AwsDict(
+            'Key', 'Value',
+            getter=lambda: self.aws_describe['Tags']
+        )
+
+    @base.Base.cached_property
+    def resources(self):
+        return [
+            StackResource(self, data)
+            for data in self.aws_resources
+        ]

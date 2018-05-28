@@ -33,11 +33,14 @@ class FakeAwsEnv:
             rv = getattr(self.client_mock, name)
             for (name, params) in config.items():
                 mock_handle = getattr(rv, name)
-                mock_handle.side_effect = lambda *a, **kw: self._get_module_side_effect(mock_handle, params)
+                mock_handle.side_effect = self._mk_bound_side_effect(mock_handle, params)
         else:
             # No config - return the default return value
             rv = self.client_mock.default
         return rv
+
+    def _mk_bound_side_effect(self, mock_handle, params):
+        return lambda *a, **kw: self._get_module_side_effect(mock_handle, params)
 
     def _get_module_side_effect(self, api_mock, mock_params):
         if callable(mock_params):
@@ -59,6 +62,7 @@ def default_fake_aws_env(fake_aws_env, fake_boto3):
     fake_aws_env.update({
         'cloudformation': {
             'describe_stacks': lambda: fake_boto3.load_resoruce('cloudformation', 'describe_stacks'),
+            'describe_stack_resources': lambda: fake_boto3.load_resoruce('cloudformation', 'describe_stack_resources'),
         }
     })
     return fake_aws_env
