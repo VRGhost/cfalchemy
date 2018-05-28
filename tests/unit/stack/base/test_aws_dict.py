@@ -24,7 +24,7 @@ def unordered_equal(list1, list2):
     return True
 
 
-class TestAwsPropsDictComplete:
+class TestAwsAdvancedDict:
 
     def default_getter(self):
         return [
@@ -35,7 +35,7 @@ class TestAwsPropsDictComplete:
         ]
 
     def test_getter(self):
-        tested = aws_dict.AwsPropsDictComplete('KeyEl', self.default_getter)
+        tested = aws_dict.AwsAdvancedDict('KeyEl', self.default_getter)
         assert tested['val1']['ValEl'] == 'val1'
         assert tested['val2']['PropEl'] == 'prop2'
         assert tested['val3'].key == 'val3'
@@ -43,7 +43,7 @@ class TestAwsPropsDictComplete:
         assert set(tested) == set(['val1', 'val2', 'val3', 'val4'])
 
     def test_no_setter_explodes(self):
-        tested = aws_dict.AwsPropsDictComplete('KeyEl', self.default_getter)
+        tested = aws_dict.AwsAdvancedDict('KeyEl', self.default_getter)
         assert tested['val1']
         with pytest.raises(NotImplementedError):
             tested['val1']['ValEl'] = 'NewValue'
@@ -54,20 +54,20 @@ class TestAwsPropsDictComplete:
             tested['val1'].pop('ValEl')
 
     def test_no_deleter_explodes(self):
-        tested = aws_dict.AwsPropsDictComplete('KeyEl', self.default_getter)
+        tested = aws_dict.AwsAdvancedDict('KeyEl', self.default_getter)
         assert tested['val1']
         with pytest.raises(NotImplementedError):
             del tested['val1']
 
     def test_setter_one(self):
         setter = mock.MagicMock()
-        tested = aws_dict.AwsPropsDictComplete('KeyEl', self.default_getter, setter)
+        tested = aws_dict.AwsAdvancedDict('KeyEl', self.default_getter, setter)
         tested['val1']['PropEl'] = "Updated!"
         setter.assert_called_with([{'KeyEl': 'val1', 'ValEl': 'val1', 'PropEl': "Updated!"}])
 
     def test_setter_multiple(self):
         setter = mock.MagicMock()
-        tested = aws_dict.AwsPropsDictComplete('KeyEl', self.default_getter, setter)
+        tested = aws_dict.AwsAdvancedDict('KeyEl', self.default_getter, setter)
         with tested.bulk_update():
             tested['val1']['PropEl'] = "Updated!"
             tested['val2']['PropEl'] = "Updated! 2"
@@ -88,14 +88,14 @@ class TestAwsPropsDictComplete:
     def test_deleter(self):
         setter = mock.MagicMock()
         deleter = mock.MagicMock()
-        tested = aws_dict.AwsPropsDictComplete('KeyEl', self.default_getter, setter, deleter)
+        tested = aws_dict.AwsAdvancedDict('KeyEl', self.default_getter, setter, deleter)
         tested.pop('val1')
         deleter.assert_called_with([{'KeyEl': 'val1'}])
 
     def test_deleter_multiple(self):
         setter = mock.MagicMock()
         deleter = mock.MagicMock()
-        tested = aws_dict.AwsPropsDictComplete('KeyEl', self.default_getter, setter, deleter)
+        tested = aws_dict.AwsAdvancedDict('KeyEl', self.default_getter, setter, deleter)
         with tested.bulk_update():
             tested.pop('val1')
             del tested['val3']
@@ -109,7 +109,7 @@ class TestAwsPropsDictComplete:
         )
 
     def test_repr(self):
-        tested = aws_dict.AwsPropsDictComplete('KeyEl', self.default_getter)
+        tested = aws_dict.AwsAdvancedDict('KeyEl', self.default_getter)
         assert 'val1' in repr(tested)
         assert 'val2' in repr(tested)
 
@@ -124,7 +124,7 @@ class TestAwsPropsDictComplete:
 
         setter = mock.MagicMock()
         setter.side_effect = on_set
-        tested = aws_dict.AwsPropsDictComplete('KeyEl', self.default_getter, setter)
+        tested = aws_dict.AwsAdvancedDict('KeyEl', self.default_getter, setter)
         ready_to_update = threading.Event()
 
         master_thread_update = dict(
@@ -180,7 +180,7 @@ class TestAwsPropsDictComplete:
     def test_uncomitted_items_view(self):
         setter = mock.MagicMock()
         deleter = mock.MagicMock()
-        tested = aws_dict.AwsPropsDictComplete('KeyEl', self.default_getter, setter, deleter)
+        tested = aws_dict.AwsAdvancedDict('KeyEl', self.default_getter, setter, deleter)
 
         orig_len = len(tested)
         with tested.bulk_update():
@@ -194,20 +194,20 @@ class TestAwsPropsDictComplete:
     def test_cb_setters(self):
         setter = mock.MagicMock()
         deleter = mock.MagicMock()
-        tested = aws_dict.AwsPropsDictComplete('KeyEl', self.default_getter)
-        assert tested.setter is None
-        assert tested.deleter is None
+        tested = aws_dict.AwsAdvancedDict('KeyEl', self.default_getter)
+        assert tested._setter_fn is None
+        assert tested._deleter_fn is None
 
-        tested.set_setter(setter)
-        tested.set_deleter(deleter)
+        tested.setter(setter)
+        tested.deleter(deleter)
 
-        assert tested.setter is setter
-        assert tested.deleter is deleter
+        assert tested._setter_fn is setter
+        assert tested._deleter_fn is deleter
 
     def test_bulk_update_rollback(self):
         setter = mock.MagicMock()
-        tested = aws_dict.AwsPropsDictComplete('KeyEl', self.default_getter)
-        tested.set_setter(setter)
+        tested = aws_dict.AwsAdvancedDict('KeyEl', self.default_getter)
+        tested.setter(setter)
 
         with tested.bulk_update():
             tested['update_1.0'] = {'ValEl': 'build_update_ctx1'}
@@ -231,5 +231,88 @@ class TestAwsPropsDictComplete:
                 {'KeyEl': 'update_1.1', 'ValEl': 'build_update_ctx1'},
                 {'KeyEl': 'update_2.0', 'ValEl': 'build_update_ctx2'},
                 {'KeyEl': 'update_2.1', 'ValEl': 'build_update_ctx2'},
+            ]
+        )
+
+
+class TestAwsDict:
+
+    def default_getter(self):
+        return [
+            {'KeyEl': 'val1', 'ValEl': 'TestAwsDict-val1', 'PropEl': 'TestAwsDict-prop1'},
+            {'KeyEl': 'val2', 'ValEl': 'TestAwsDict-val2', 'PropEl': 'TestAwsDict-prop2'},
+            {'KeyEl': 'val3', 'ValEl': 'TestAwsDict-val3', 'PropEl': 'TestAwsDict-prop3'},
+            {'KeyEl': 'val4', 'ValEl': 'TestAwsDict-val4', 'PropEl': 'TestAwsDict-prop4'},
+        ]
+
+    def test_base(self):
+        tested = aws_dict.AwsDict('KeyEl', 'ValEl', self.default_getter)
+        assert tested['val1'] == 'TestAwsDict-val1'
+        assert tested['val4'] == 'TestAwsDict-val4'
+        assert tested.full['val2'] == {'ValEl': 'TestAwsDict-val2', 'PropEl': 'TestAwsDict-prop2'}
+        assert 'val3' in repr(tested)
+        assert len(tested) == 4
+        assert set(iter(tested)) == set(['val1', 'val2', 'val3', 'val4'])
+
+    def test_setter_amend(self):
+        setter = mock.MagicMock()
+        tested = aws_dict.AwsDict('KeyEl', 'ValEl', self.default_getter, setter)
+        tested['val3'] = 'potato'
+        assert unordered_equal(
+            setter.call_args[0][0],
+            [
+                {'KeyEl': 'val3', 'ValEl': 'potato', 'PropEl': 'TestAwsDict-prop3'},
+            ]
+        )
+
+    def test_setter_create(self):
+        setter = mock.MagicMock()
+        tested = aws_dict.AwsDict('KeyEl', 'ValEl', self.default_getter, setter)
+        tested['val-new'] = 'potato'
+        assert unordered_equal(
+            setter.call_args[0][0],
+            [
+                {'KeyEl': 'val-new', 'ValEl': 'potato'},
+            ]
+        )
+
+    def test_delete(self):
+        setter = mock.MagicMock()
+        deleter = mock.MagicMock()
+        tested = aws_dict.AwsDict('KeyEl', 'ValEl', self.default_getter, setter, deleter)
+        del tested['val1']
+        assert not setter.called
+        assert unordered_equal(
+            deleter.call_args[0][0],
+            [
+                {'KeyEl': 'val1'},
+            ]
+        )
+
+    def test_handler_assigment(self):
+        tested = aws_dict.AwsDict('KeyEl', 'ValEl', self.default_getter)
+        setter = mock.MagicMock()
+        deleter = mock.MagicMock()
+
+        tested.setter(setter)
+        tested.deleter(deleter)
+
+        assert tested.full._deleter_fn is deleter
+        assert tested.full._setter_fn is setter
+
+    def test_bulk_update(self):
+        setter = mock.MagicMock()
+        tested = aws_dict.AwsDict('KeyEl', 'ValEl', self.default_getter, setter)
+        with tested.bulk_update():
+            tested['val1'] = 'new-value'
+            with tested.bulk_update():
+                tested.full['val1']['PropEl'] = 'new-prop-value'
+            tested['val2'] = 'new-value-2'
+
+        assert unordered_equal(
+            setter.call_args[0][0],
+            [
+                {'KeyEl': 'val1', 'ValEl': 'new-value', 'PropEl': 'new-prop-value'},
+                {'KeyEl': 'val2', 'ValEl': 'new-value-2', 'PropEl': 'TestAwsDict-prop2'},
             ]
         )

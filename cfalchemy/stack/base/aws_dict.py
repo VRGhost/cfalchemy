@@ -62,7 +62,7 @@ class AwsItem(collections.MutableMapping):
         )
 
 
-class AwsPropsDictComplete(collections.MutableMapping):
+class AwsAdvancedDict(collections.MutableMapping):
     """Generic aws props dict.
 
         Transforms list of generic {<name_key>: <value>, <value_key>: <value>, ... <extra_prop>: <value> } dict items
@@ -86,19 +86,19 @@ class AwsPropsDictComplete(collections.MutableMapping):
         assert isinstance(key_name, str)
         self.key_name = key_name
         assert callable(getter)
-        self.getter = getter
-        self.setter = setter
-        self.deleter = deleter
+        self._getter_fn = getter
+        self._setter_fn = setter
+        self._deleter_fn = deleter
         self.dict_thread_stacks = threading.local()
         self._mutex = threading.Lock()
 
-    def set_setter(self, new_setter):
+    def setter(self, new_setter):
         assert callable(new_setter)
-        self.setter = new_setter
+        self._setter_fn = new_setter
 
-    def set_deleter(self, new_deleter):
+    def deleter(self, new_deleter):
         assert callable(new_deleter)
-        self.deleter = new_deleter
+        self._deleter_fn = new_deleter
 
     def __setitem__(self, key, value):
         self.update(**{key: value})
@@ -157,15 +157,15 @@ class AwsPropsDictComplete(collections.MutableMapping):
             else:
                 api_el.update(value.data)
                 to_set.append(api_el)
-        if to_set and not self.setter:
+        if to_set and not self._setter_fn:
             raise NotImplementedError('You must provide "setter" to update dict elements.')
         elif to_set:
-            self.setter(to_set)
+            self._setter_fn(to_set)
 
-        if to_delete and not self.deleter:
+        if to_delete and not self._deleter_fn:
             raise NotImplementedError('You must provide "delete" to delete elements')
         elif to_delete:
-            self.deleter(to_delete)
+            self._deleter_fn(to_delete)
         self._remote_item_cache = None  # force remote item reload
 
     @property
@@ -202,7 +202,7 @@ class AwsPropsDictComplete(collections.MutableMapping):
     def remote_items(self):
         if self._remote_item_cache is None:
             _remote_item_cache = {}
-            for el in self.getter():
+            for el in self._getter_fn():
                 item_el = self._mk_aws_item(el)
                 _remote_item_cache[item_el.key] = item_el
             self._remote_item_cache = _remote_item_cache
@@ -225,4 +225,53 @@ class AwsPropsDictComplete(collections.MutableMapping):
             self.__class__.__module__,
             self.__class__.__name__,
             dict(self)
+        )
+
+
+class AwsDict(collections.MutableMapping):
+    """Generic AWS properties dict.
+
+    This dict class prefers to retung one particular attribute as value of the dictionary
+        ( instead of returning dict of attributes ).
+
+    It is build on top of `AwsAdvancedDict`though so user can still access/set all attributes wia `.full` property
+    if needed.
+    """
+
+    def __init__(self, key_name, value_name, getter, setter=None, deleter=None):
+        self.value_key = value_name
+        self.full = AwsAdvancedDict(key_name, getter, setter, deleter)
+
+    def setter(self, fn):
+        return self.full.setter(fn)
+
+    def deleter(self, fn):
+        return self.full.deleter(fn)
+
+    def __getitem__(self, key):
+        return self.full[key][self.value_key]
+
+    def __delitem__(self, key):
+        del self.full[key]
+
+    def __setitem__(self, key, value):
+        try:
+            self.full[key][self.value_key] = value
+        except KeyError:
+            # no such key in self.full
+            self.full[key] = {self.value_key: value}
+
+    def __iter__(self):
+        return iter(self.full)
+
+    def __len__(self):
+        return len(self.full)
+
+    def bulk_update(self):
+        return self.full.bulk_update()
+
+    def __repr__(self):
+        return "<{}.{} content={}>".format(
+            self.__class__.__module__, self.__class__.__name__,
+            self.full
         )
