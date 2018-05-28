@@ -47,5 +47,6 @@ setup(
         'boto3>=1',
         'six>=1.10.0',
         'cached_property',
+        'frozendict>=1.2',
     ]
 )

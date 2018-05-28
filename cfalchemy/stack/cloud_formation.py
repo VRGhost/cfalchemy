@@ -2,6 +2,7 @@
 import re
 import boto3
 import uuid
+from frozendict import frozendict
 
 from . import base
 
@@ -116,7 +117,11 @@ class Stack(base.Base):
 
     @base.Base.cached_property
     def resources(self):
-        return [
+        resources = [
             StackResource(self, data)
             for data in self.aws_resources
         ]
+        return frozendict(
+            (res.logical_id, res)
+            for res in resources
+        )

@@ -9,3 +9,4 @@ mock
 cached_property
 boto3
 six
+frozendict>=1.2

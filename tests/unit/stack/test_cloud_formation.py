@@ -32,5 +32,16 @@ def test_dict_props(my_stack):
     assert my_stack.tags['CreatedWith'] == 'create-stack.sh'
 
 
-def test_stack_resources(my_stack):
+def test_stack_resources_accessor(my_stack):
     assert len(my_stack.resources) == 79
+    for (key, resource) in my_stack.resources.items():
+        assert resource.logical_id == key
+
+
+def test_stack_resource(my_stack):
+    logical_id = 'CeleryWorkerCPUAlarmLow'
+    resource = my_stack.resources[logical_id]
+    assert resource.status == 'UPDATE_COMPLETE'
+    assert resource.type == 'AWS::CloudWatch::Alarm'
+    assert resource.physical_id == 'sooty-CeleryWorkerCPUAlarmLow-DYOHQBR3UPT9'
+    assert logical_id in repr(resource)
