@@ -45,3 +45,20 @@ def test_stack_resource(my_stack):
     assert resource.type == 'AWS::CloudWatch::Alarm'
     assert resource.physical_id == 'sooty-CeleryWorkerCPUAlarmLow-DYOHQBR3UPT9'
     assert logical_id in repr(resource)
+
+
+def test_get_resource(my_stack):
+    logical_id = 'CeleryWorkerSNSTopic'
+    physical_id = 'arn:aws:sns:eu-central-1:424242424242:sooty-CeleryWorkerSNSTopic-8K9M49SHW43E'
+    assert my_stack.resources[logical_id] is my_stack.get_resource(logical_id)
+    assert my_stack.resources[logical_id] is my_stack.get_resource(physical_id)
+    assert my_stack.resources[logical_id] is not my_stack.get_resource('CeleryWorkerScaleDownPolicy')
+
+
+def test_get_resource_exc(my_stack):
+    with pytest.raises(KeyError):
+        my_stack.get_resource('i-dont-exist')
+
+
+def test_get_resource_default(my_stack):
+    assert my_stack.get_resource('i-dont-exist', default=None) is None

@@ -121,7 +121,18 @@ class Stack(base.Base):
             StackResource(self, data)
             for data in self.aws_resources
         ]
+        # logical_ids must be unique in scope of particular stack instance
         return frozendict(
             (res.logical_id, res)
             for res in resources
         )
+
+    def get_resource(self, logical_or_physical_id, default=KeyError):
+        for resource in self.resources.values():
+            if logical_or_physical_id in (resource.physical_id, resource.logical_id):
+                return resource
+        # not found
+        if default is KeyError:
+            raise KeyError(logical_or_physical_id)
+        else:
+            return default
