@@ -1,0 +1,62 @@
+DBInstances:
+- AllocatedStorage: 30
+  AutoMinorVersionUpgrade: true
+  AvailabilityZone: eu-central-1c
+  BackupRetentionPeriod: 1
+  CACertificateIdentifier: rds-ca-2015
+  CopyTagsToSnapshot: false
+  DBInstanceArn: arn:aws:rds:eu-central-1:424242424242:db:sdb6e3j9i18bep
+  DBInstanceClass: db.t2.micro
+  DBInstanceIdentifier: sdb6e3j9i18bep
+  DBInstanceStatus: available
+  DBName: postgres
+  DBParameterGroups:
+  - {DBParameterGroupName: default.postgres10, ParameterApplyStatus: in-sync}
+  DBSecurityGroups: []
+  DBSubnetGroup:
+    DBSubnetGroupDescription: sooty
+    DBSubnetGroupName: sooty-dbsubnetgroup-io1xds5ud6i5
+    SubnetGroupStatus: Complete
+    Subnets:
+    - SubnetAvailabilityZone: {Name: eu-central-1b}
+      SubnetIdentifier: subnet-f82ab185
+      SubnetStatus: Active
+    - SubnetAvailabilityZone: {Name: eu-central-1c}
+      SubnetIdentifier: subnet-c76a1c8a
+      SubnetStatus: Active
+    - SubnetAvailabilityZone: {Name: eu-central-1a}
+      SubnetIdentifier: subnet-6affd201
+      SubnetStatus: Active
+    VpcId: vpc-5aa2d531
+  DbInstancePort: 0
+  DbiResourceId: db-BM27FNLVE2BPDAB5ZGPB6FAL7A
+  DomainMemberships: []
+  Endpoint: {Address: sdb6e3j9i18bep.chayoly0loym.eu-central-1.rds.amazonaws.com,
+    HostedZoneId: Z1RLNUO7B9Q6NB, Port: 5432}
+  Engine: postgres
+  EngineVersion: '10.3'
+  IAMDatabaseAuthenticationEnabled: false
+  InstanceCreateTime: 2018-05-15 13:20:39.604000+00:00
+  LatestRestorableTime: 2018-05-29 07:50:47+00:00
+  LicenseModel: postgresql-license
+  MasterUsername: postgres
+  MonitoringInterval: 0
+  MultiAZ: false
+  OptionGroupMemberships:
+  - {OptionGroupName: 'default:postgres-10', Status: in-sync}
+  PendingModifiedValues: {}
+  PerformanceInsightsEnabled: false
+  PreferredBackupWindow: 04:59-05:29
+  PreferredMaintenanceWindow: mon:23:01-mon:23:31
+  PubliclyAccessible: false
+  ReadReplicaDBInstanceIdentifiers: []
+  StorageEncrypted: false
+  StorageType: standard
+  VpcSecurityGroups:
+  - {Status: active, VpcSecurityGroupId: sg-93644cfe}
+ResponseMetadata:
+  HTTPHeaders: {content-length: '4259', content-type: text/xml, date: 'Tue, 29 May
+      2018 07:56:24 GMT', vary: Accept-Encoding, x-amzn-requestid: 92fc9477-91bb-4462-89f0-d29ad7930f0d}
+  HTTPStatusCode: 200
+  RequestId: 92fc9477-91bb-4462-89f0-d29ad7930f0d
+  RetryAttempts: 0

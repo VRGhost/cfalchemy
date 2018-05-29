@@ -2,14 +2,16 @@
 import re
 import boto3
 import uuid
+import warnings
 from frozendict import frozendict
 
 from . import base
 
 
-class StackResource(object):
+class StackResource(base.Base):
 
     def __init__(self, stack, aws_data):
+        super(StackResource, self).__init__()
         self.stack = stack
         self.data = aws_data
 
@@ -28,6 +30,16 @@ class StackResource(object):
     @property
     def physical_id(self):
         return self.data['PhysicalResourceId']
+
+    @base.Base.cached_property
+    def resource(self):
+        """Actual AWS resource handle for this object.
+
+        Raises KeyError if resource type isn't supported yet.
+        """
+        cls = self.stack.registry[self.type]
+        return cls(self.stack, self.physical_id)
+
 
     def __repr__(self):
         return "<{} data={}>".format(self.__class__.__name__, self.data)

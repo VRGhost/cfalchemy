@@ -1,0 +1,76 @@
+Reservations:
+- Groups: []
+  Instances:
+  - AmiLaunchIndex: 0
+    Architecture: x86_64
+    BlockDeviceMappings:
+    - DeviceName: /dev/sda1
+      Ebs: {AttachTime: !!timestamp '2018-05-15 13:19:43+00:00', DeleteOnTermination: true,
+        Status: attached, VolumeId: vol-0ab5df0abde968414}
+    ClientToken: sooty-Rabbi-1G1L32YYUP9TB
+    CpuOptions: {CoreCount: 1, ThreadsPerCore: 1}
+    EbsOptimized: false
+    Hypervisor: xen
+    IamInstanceProfile: {Arn: 'arn:aws:iam::424242424242:instance-profile/sooty-BastionIAMProfile-YE5WTI2CTOFC',
+      Id: AIPAIMC276UQTK5VDEK64}
+    ImageId: ami-0069d86f
+    InstanceId: i-02dbbd53dbb355b05
+    InstanceType: t2.micro
+    KeyName: IljasAWSKeypair
+    LaunchTime: 2018-05-23 07:43:31+00:00
+    Monitoring: {State: disabled}
+    NetworkInterfaces:
+    - Association: {IpOwnerId: amazon, PublicDnsName: ec2-18-196-81-235.eu-central-1.compute.amazonaws.com,
+        PublicIp: 18.196.81.235}
+      Attachment: {AttachTime: !!timestamp '2018-05-15 13:19:43+00:00', AttachmentId: eni-attach-9b944676,
+        DeleteOnTermination: true, DeviceIndex: 0, Status: attached}
+      Description: ''
+      Groups:
+      - {GroupId: sg-93644cfe, GroupName: sooty-AllowAllPrivateTrafficSecurityGroup-Q8Y9LDIPT32Z}
+      Ipv6Addresses: []
+      MacAddress: 02:78:2c:59:6e:96
+      NetworkInterfaceId: eni-77aab223
+      OwnerId: '424242424242'
+      PrivateDnsName: ip-10-138-10-92.eu-central-1.compute.internal
+      PrivateIpAddress: 10.138.10.92
+      PrivateIpAddresses:
+      - Association: {IpOwnerId: amazon, PublicDnsName: ec2-18-196-81-235.eu-central-1.compute.amazonaws.com,
+          PublicIp: 18.196.81.235}
+        Primary: true
+        PrivateDnsName: ip-10-138-10-92.eu-central-1.compute.internal
+        PrivateIpAddress: 10.138.10.92
+      SourceDestCheck: true
+      Status: in-use
+      SubnetId: subnet-dfffd2b4
+      VpcId: vpc-5aa2d531
+    Placement: {AvailabilityZone: eu-central-1a, GroupName: '', Tenancy: default}
+    PrivateDnsName: ip-10-138-10-92.eu-central-1.compute.internal
+    PrivateIpAddress: 10.138.10.92
+    ProductCodes: []
+    PublicDnsName: ec2-18-196-81-235.eu-central-1.compute.amazonaws.com
+    PublicIpAddress: 18.196.81.235
+    RootDeviceName: /dev/sda1
+    RootDeviceType: ebs
+    SecurityGroups:
+    - {GroupId: sg-93644cfe, GroupName: sooty-AllowAllPrivateTrafficSecurityGroup-Q8Y9LDIPT32Z}
+    SourceDestCheck: true
+    State: {Code: 16, Name: running}
+    StateTransitionReason: ''
+    SubnetId: subnet-dfffd2b4
+    Tags:
+    - {Key: Name, Value: sooty RabbitMQ server}
+    - {Key: CreatedWith, Value: create-stack.sh}
+    - {Key: 'aws:cloudformation:stack-id', Value: 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/1111111-1111-1111-1111-1111111'}
+    - {Key: 'aws:cloudformation:logical-id', Value: RabbitMq}
+    - {Key: 'aws:cloudformation:stack-name', Value: sooty}
+    VirtualizationType: hvm
+    VpcId: vpc-5aa2d531
+  OwnerId: '424242424242'
+  RequesterId: '119857478548'
+  ReservationId: r-0a0abc92bcd6154f6
+ResponseMetadata:
+  HTTPHeaders: {content-type: text/xml;charset=UTF-8, date: 'Tue, 29 May 2018 08:00:02
+      GMT', server: AmazonEC2, transfer-encoding: chunked, vary: Accept-Encoding}
+  HTTPStatusCode: 200
+  RequestId: 9d33982c-0794-4591-9c66-473fd1ff4ccf
+  RetryAttempts: 0

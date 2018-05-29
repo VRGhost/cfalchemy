@@ -1,0 +1,23 @@
+ResponseMetadata:
+  HTTPHeaders: {content-type: text/xml;charset=UTF-8, date: 'Tue, 29 May 2018 08:03:59
+      GMT', server: AmazonEC2, transfer-encoding: chunked, vary: Accept-Encoding}
+  HTTPStatusCode: 200
+  RequestId: 97637049-257a-4853-9f9a-9d5d4336a8f3
+  RetryAttempts: 0
+Subnets:
+- AssignIpv6AddressOnCreation: false
+  AvailabilityZone: eu-central-1a
+  AvailableIpAddressCount: 2039
+  CidrBlock: 10.138.32.0/21
+  DefaultForAz: false
+  Ipv6CidrBlockAssociationSet: []
+  MapPublicIpOnLaunch: false
+  State: available
+  SubnetId: subnet-6affd201
+  Tags:
+  - {Key: 'aws:cloudformation:logical-id', Value: AWSSubnet1}
+  - {Key: 'aws:cloudformation:stack-name', Value: sooty}
+  - {Key: Name, Value: sooty AWS Service Subnet 1}
+  - {Key: CreatedWith, Value: create-stack.sh}
+  - {Key: 'aws:cloudformation:stack-id', Value: 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/1111111-1111-1111-1111-1111111'}
+  VpcId: vpc-5aa2d531

@@ -29,6 +29,9 @@ class CFAlchemyResourceRegistry(collections.Mapping):
         """This method just returns a list of all CF class objects known to the cfalchemy library"""
         return (
             cfalchemy.stack.cloud_formation.Stack,
+            cfalchemy.stack.ec2.ECInstance,
+            cfalchemy.stack.ec2.Subnet,
+            cfalchemy.stack.rds.DBInstance,
         )
 
     def __getitem__(self, name):
