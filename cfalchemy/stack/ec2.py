@@ -53,23 +53,25 @@ class ECInstance(base.StackResource):
     def private_ip(self):
         return self.describe['PrivateIpAddress']
 
-    # @util.tags.property
-    # def tags(self):
-    #     return {
-    #         'getter': lambda: self.describe['Tags'],
-    #         'setter': lambda els: self.conn.create_tags(
-    #             Resources=[
-    #                 self.instance_id
-    #             ],
-    #             Tags=list(els)
-    #         ),
-    #         'deleter': lambda els: self.conn.delete_tags(
-    #             Resources=[
-    #                 self.instance_id
-    #             ],
-    #             Tags=list(els)
-    #         )
-    #     }
+    @base.StackResource.cached_property
+    def tags(self):
+        return base.AwsDict(
+            'Key', 'Value',
+            getter=lambda: self.describe['Tags'],
+            setter=lambda els: self.conn.create_tags(
+                Resources=[
+                    self.instance_id
+                ],
+                Tags=list(els)
+            ),
+            deleter=lambda els: self.conn.delete_tags(
+                Resources=[
+                    self.instance_id
+                ],
+                Tags=list(els)
+            ),
+            on_cache_purged=lambda: self.clear_cache(),
+        )
 
     def stop(self):
         """Stop the instance"""

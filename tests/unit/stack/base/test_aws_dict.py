@@ -234,6 +234,24 @@ class TestAwsAdvancedDict:
             ]
         )
 
+    def test_cache_purge_cb_on_update(self):
+        setter = mock.MagicMock()
+        deleter = mock.MagicMock()
+        on_purge = mock.MagicMock()
+        tested = aws_dict.AwsAdvancedDict('KeyEl', self.default_getter, setter, deleter, on_purge)
+
+        tested['update_1.0'] = {'ValEl': 'build_update_ctx1'}
+        assert on_purge.called
+
+    def test_cache_purge_cb_on_delete(self):
+        setter = mock.MagicMock()
+        deleter = mock.MagicMock()
+        on_purge = mock.MagicMock()
+        tested = aws_dict.AwsAdvancedDict('KeyEl', self.default_getter, setter, deleter, on_purge)
+
+        tested.pop('val2')
+        assert on_purge.called
+
 
 class TestAwsDict:
 
@@ -316,3 +334,21 @@ class TestAwsDict:
                 {'KeyEl': 'val2', 'ValEl': 'new-value-2', 'PropEl': 'TestAwsDict-prop2'},
             ]
         )
+
+    def test_cache_purge_cb_on_update(self):
+        setter = mock.MagicMock()
+        deleter = mock.MagicMock()
+        on_purge = mock.MagicMock()
+        tested = aws_dict.AwsDict('KeyEl', 'ValEl', self.default_getter, setter, deleter, on_purge)
+
+        tested['update_1.0'] = 'build_update_ctx1'
+        assert on_purge.called
+
+    def test_cache_purge_cb_on_delete(self):
+        setter = mock.MagicMock()
+        deleter = mock.MagicMock()
+        on_purge = mock.MagicMock()
+        tested = aws_dict.AwsDict('KeyEl', 'ValEl', self.default_getter, setter, deleter, on_purge)
+
+        tested.pop('val2')
+        assert on_purge.called
