@@ -45,3 +45,25 @@ class TestInstance(object):
                     assert getattr(my_instance, state_attr) is True
                 else:
                     assert getattr(my_instance, state_attr) is False
+
+    def test_instance_start(self, my_instance):
+        my_instance.describe
+        my_instance.describe
+        my_instance.describe
+        my_instance.start()
+        my_instance.describe
+
+        my_instance.conn.start_instances(InstanceIds=[my_instance.name])
+        assert my_instance.conn.describe_instances.call_count == 2, \
+            "Describe called two times due to cachin & cache purge"
+
+    def test_instance_stop(self, my_instance):
+        my_instance.describe
+        my_instance.describe
+        my_instance.describe
+        my_instance.stop()
+        my_instance.describe
+
+        my_instance.conn.stop_instances(InstanceIds=[my_instance.name])
+        assert my_instance.conn.describe_instances.call_count == 2, \
+            "Describe called two times due to cachin & cache purge"

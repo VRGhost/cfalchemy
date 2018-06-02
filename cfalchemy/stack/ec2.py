@@ -26,6 +26,7 @@ class ECInstance(base.StackResource):
 
     @base.StackResource.cached_property
     def describe(self):
+        print(self.conn.describe_instances)
         res = self.conn.describe_instances(InstanceIds=[self.instance_id])['Reservations']
         assert len(res) == 1
         assert len(res[0]['Instances']) == 1
@@ -72,12 +73,16 @@ class ECInstance(base.StackResource):
 
     def stop(self):
         """Stop the instance"""
-        self.conn.stop_instances(InstanceIds=[self.instance_id])
-        self.clear_cache()
+        try:
+            self.conn.stop_instances(InstanceIds=[self.instance_id])
+        finally:
+            self.clear_cache()
 
     def start(self):
-        self.conn.start_instances(InstanceIds=[self.instance_id])
-        self.clear_cache()
+        try:
+            self.conn.start_instances(InstanceIds=[self.instance_id])
+        finally:
+            self.clear_cache()
 
     # Instance states
 

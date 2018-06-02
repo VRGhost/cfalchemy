@@ -19,13 +19,21 @@ def load_resource(*path):
 
 class FakeBoto(object):
 
+    current_mock = None
+
     @contextlib.contextmanager
     def patch(self):
         """A context that patches boto3 into a mock"""
+        assert self.current_mock is None, "Only one concurrent mock is permitted"
         with mock.patch('boto3.client') as boto_client_mock:
-            yield {
+            out = {
                 'client': boto_client_mock
             }
+            self.current_mock = out
+            try:
+                yield out
+            finally:
+                self.current_mock = None
 
     def load_resoruce(self, *path):
         return load_resource(*path)
