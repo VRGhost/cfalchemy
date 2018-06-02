@@ -85,3 +85,31 @@ class TestInstance(object):
 
     def test_subnet(self, my_instance):
         assert my_instance.subnet.cfalchemy_uuid == 'cfalchemy::ec2::subnet::subnet-dfffd2b4'
+
+    def test_tags_get(self, my_instance):
+        assert dict(my_instance.tags) == {
+            'Name': 'sooty RabbitMQ server',
+            'CreatedWith': 'create-stack.sh',
+            'aws:cloudformation:stack-id':
+                'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/1111111-1111-1111-1111-1111111',
+            'aws:cloudformation:logical-id': 'RabbitMq',
+            'aws:cloudformation:stack-name': 'sooty'
+        }
+
+    def test_tags_update(self, my_instance):
+        my_instance.tags['hello'] = 'world'
+        my_instance.conn.create_tags.assert_called_with(
+            Resources=['i-007d05f94c3bb8027'],
+            Tags=[
+                {'Key': 'hello', 'Value': 'world'},
+            ]
+        )
+
+    def test_tags_delete(self, my_instance):
+        my_instance.tags.pop('CreatedWith')
+        my_instance.conn.delete_tags.assert_called_with(
+            Resources=['i-007d05f94c3bb8027'],
+            Tags=[
+                {'Key': 'CreatedWith'},
+            ]
+        )
