@@ -68,6 +68,10 @@ def default_fake_aws_env(fake_aws_env, fake_boto3):
             'describe_instances': lambda: fake_boto3.load_resoruce('ec2', 'describe_instances'),
             'describe_subnets': lambda: fake_boto3.load_resoruce('ec2', 'describe_subnets'),
         },
+        'rds': {
+            'describe_db_instances': lambda: fake_boto3.load_resoruce('rds', 'describe_db_instances'),
+            'list_tags_for_resource': lambda: fake_boto3.load_resoruce('rds', 'list_tags_for_resource'),
+        }
     })
     return fake_aws_env
 

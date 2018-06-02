@@ -1,0 +1,12 @@
+ResponseMetadata:
+  HTTPHeaders: {content-length: '891', content-type: text/xml, date: 'Sat, 02 Jun
+      2018 15:02:51 GMT', x-amzn-requestid: 68142502-adf8-4612-9ca8-46f7f06dbb12}
+  HTTPStatusCode: 200
+  RequestId: 68142502-adf8-4612-9ca8-46f7f06dbb12
+  RetryAttempts: 0
+TagList:
+- {Key: 'aws:cloudformation:stack-name', Value: sooty}
+- {Key: CreatedWith, Value: create-stack.sh}
+- {Key: 'aws:cloudformation:logical-id', Value: Database}
+- {Key: 'aws:cloudformation:stack-id', Value: 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/479d5820-5842-11e8-88f7-500c52a6ce62'}
+- {Key: Name, Value: sooty Database}

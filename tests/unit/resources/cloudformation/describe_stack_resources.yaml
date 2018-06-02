@@ -203,6 +203,7 @@ ResponseMetadata:
 - {!!python/unicode 'LogicalResourceId': LogGroup, !!python/unicode 'PhysicalResourceId': sooty-LogGroup-160XHL8E2RABR,
   !!python/unicode 'ResourceStatus': CREATE_COMPLETE, !!python/unicode 'ResourceType': 'AWS::Logs::LogGroup',
   !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
+  !!python/unicode 'StackId': 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/49d21820-5842-11e8-88f7-520c52a1ce62',
   !!python/unicode 'StackName': sooty, !!python/unicode 'Timestamp': !!timestamp '2018-05-15
     13:17:18.766000+00:00'}
 - {!!python/unicode 'LogicalResourceId': Memcached, !!python/unicode 'PhysicalResourceId': soo-me-12n2fe900h2ip,

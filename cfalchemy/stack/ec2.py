@@ -26,7 +26,6 @@ class ECInstance(base.StackResource):
 
     @base.StackResource.cached_property
     def describe(self):
-        print(self.conn.describe_instances)
         res = self.conn.describe_instances(InstanceIds=[self.instance_id])['Reservations']
         assert len(res) == 1
         assert len(res[0]['Instances']) == 1
