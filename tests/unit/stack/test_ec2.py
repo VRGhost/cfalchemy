@@ -4,6 +4,21 @@ import mock
 import cfalchemy.stack.ec2 as ec2
 
 
+class TestSubnet(object):
+
+    @pytest.fixture()
+    def my_subnet(self, default_stack):
+        return default_stack.resources['PublicSubnet1'].resource
+
+    def test_describe(self, my_subnet):
+        assert my_subnet.describe
+        assert my_subnet.cfalchemy_uuid == 'cfalchemy::ec2::subnet::subnet-dfffd2b4'
+
+    def test_simple_props(self, my_subnet):
+        assert my_subnet.subnet_id == 'subnet-dfffd2b4'
+        assert my_subnet.availability_zone == 'eu-central-1a'
+
+
 class TestInstance(object):
 
     @pytest.fixture()
@@ -12,7 +27,7 @@ class TestInstance(object):
 
     def test_describe(self, my_instance):
         assert my_instance.describe
-        assert my_instance.cfalchemy_uuid == 'cfalchemy::ec2::i-007d05f94c3bb8027'
+        assert my_instance.cfalchemy_uuid == 'cfalchemy::ec2::instance::i-007d05f94c3bb8027'
 
     def test_simple_props(self, my_instance):
         assert my_instance.instance_id == 'i-007d05f94c3bb8027'
@@ -67,3 +82,6 @@ class TestInstance(object):
         my_instance.conn.stop_instances(InstanceIds=[my_instance.name])
         assert my_instance.conn.describe_instances.call_count == 2, \
             "Describe called two times due to cachin & cache purge"
+
+    def test_subnet(self, my_instance):
+        assert my_instance.subnet.cfalchemy_uuid == 'cfalchemy::ec2::subnet::subnet-dfffd2b4'

@@ -35,15 +35,15 @@ class ECInstance(base.StackResource):
     @base.StackResource.cached_property
     def cfalchemy_uuid(self):
         # EC2 instances don't have ARNs
-        return "cfalchemy::ec2::{}".format(self.name)
+        return "cfalchemy::ec2::instance::{}".format(self.instance_id)
 
     @property
     def dns_name(self):
         return self.describe['PrivateDnsName']
 
-    @property
+    @base.StackResource.cached_property
     def subnet(self):
-        return self.stack[self.describe['SubnetId']]
+        return self.stack.get_resource(self.describe['SubnetId']).resource
 
     @property
     def public_ip(self):
@@ -98,16 +98,24 @@ class ECInstance(base.StackResource):
     stopped = property(lambda self: self.state == InstanceState.stopped)
 
 
-class Subnet(base.Base):
+class Subnet(base.StackResource):
 
     resource_type = 'AWS::EC2::Subnet'
+    boto_service_name = 'ec2'
 
-    def __init__(self, stack, name):
-        super(Subnet, self).__init__()
-        self.name = name
-        self.stack = stack
-        self.conn = self.stack.boto_client('ec2')
+    @property
+    def subnet_id(self):
+        return self.name
+
+    @base.StackResource.cached_property
+    def cfalchemy_uuid(self):
+        # EC2 instances don't have ARNs
+        return "cfalchemy::ec2::subnet::{}".format(self.subnet_id)
 
     @base.Base.cached_property
     def describe(self):
-        return self.conn.describe_subnets(SubnetIds=[self.name])['Subnets'][0]
+        return self.conn.describe_subnets(SubnetIds=[self.subnet_id])['Subnets'][0]
+
+    @property
+    def availability_zone(self):
+        return self.describe['AvailabilityZone']
