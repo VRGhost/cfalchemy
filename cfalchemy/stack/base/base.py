@@ -9,7 +9,7 @@ from cached_property import cached_property as orig_cached_prop
 log = logging.getLogger(__name__)
 
 
-class Base:
+class Base(object):
     __metaclass__ = ABCMeta
 
     resource_type = "<Override with AWS resource type>"
@@ -65,3 +65,25 @@ class Base:
             return out
 
         return _wrapper_
+
+
+class StackResource(Base):
+    """Generic stack resource with generic __init__ args"""
+
+    boto_service_name = 'name of the boto3 service for used to access this resource'
+
+    def __init__(self, stack, name):
+        """
+        :param stack: parent stack object
+        :param name: unique resource name/id
+        """
+        super(StackResource, self).__init__()
+        self.name = name
+        self.stack = stack
+
+    cached_property = Base.cached_property
+
+    @cached_property
+    def conn(self):
+        """Boto3 connection object"""
+        return self.stack.boto_client(self.boto_service_name)

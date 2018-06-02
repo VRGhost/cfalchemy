@@ -48,5 +48,6 @@ setup(
         'six>=1.10.0',
         'cached_property',
         'frozendict>=1.2',
+        'enum34>=1.1.6',
     ]
 )

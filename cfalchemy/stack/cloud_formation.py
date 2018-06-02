@@ -2,7 +2,6 @@
 import re
 import boto3
 import uuid
-import warnings
 from frozendict import frozendict
 
 from . import base
@@ -39,7 +38,6 @@ class StackResource(base.Base):
         """
         cls = self.stack.registry[self.type]
         return cls(self.stack, self.physical_id)
-
 
     def __repr__(self):
         return "<{} data={}>".format(self.__class__.__name__, self.data)

@@ -63,6 +63,19 @@ def default_fake_aws_env(fake_aws_env, fake_boto3):
         'cloudformation': {
             'describe_stacks': lambda: fake_boto3.load_resoruce('cloudformation', 'describe_stacks'),
             'describe_stack_resources': lambda: fake_boto3.load_resoruce('cloudformation', 'describe_stack_resources'),
-        }
+        },
+        'ec2': {
+            'describe_instances': lambda: fake_boto3.load_resoruce('ec2', 'describe_instances'),
+            'describe_subnets': lambda: fake_boto3.load_resoruce('ec2', 'describe_subnets'),
+        },
     })
     return fake_aws_env
+
+
+@pytest.fixture()
+def default_stack(default_fake_aws_env):
+    import cfalchemy.stack.cloud_formation as cf
+    from cfalchemy.resource_registry import CFAlchemyResourceRegistry
+
+    with default_fake_aws_env.activate():
+        yield cf.Stack('hello-world', CFAlchemyResourceRegistry(), {})

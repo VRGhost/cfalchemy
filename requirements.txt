@@ -10,3 +10,4 @@ cached_property
 boto3
 six
 frozendict>=1.2
+enum34>=1.1.6
