@@ -32,6 +32,7 @@ class CFAlchemyResourceRegistry(collections.Mapping):
             cfalchemy.stack.ec2.ECInstance,
             cfalchemy.stack.ec2.Subnet,
             cfalchemy.stack.rds.DBInstance,
+            cfalchemy.stack.autoscaling.AutoScalingGroup,
         )
 
     def __getitem__(self, name):

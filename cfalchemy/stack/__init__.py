@@ -4,4 +4,5 @@ from . import (  # noqa
     cloud_formation,
     rds,
     ec2,
+    autoscaling,
 )

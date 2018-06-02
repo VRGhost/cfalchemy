@@ -71,6 +71,11 @@ def default_fake_aws_env(fake_aws_env, fake_boto3):
         'rds': {
             'describe_db_instances': lambda: fake_boto3.load_resoruce('rds', 'describe_db_instances'),
             'list_tags_for_resource': lambda: fake_boto3.load_resoruce('rds', 'list_tags_for_resource'),
+        },
+        'autoscaling': {
+            'describe_auto_scaling_groups': lambda: fake_boto3.load_resoruce(
+                'autoscaling', 'describe_auto_scaling_groups'
+            ),
         }
     })
     return fake_aws_env

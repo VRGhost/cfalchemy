@@ -1,0 +1,41 @@
+AutoScalingGroups:
+- AutoScalingGroupARN: arn:aws:autoscaling:eu-central-1:424242424242:autoScalingGroup:afe5c7f9-ec77-4c71-9a65-472cffd26e78:autoScalingGroupName/sooty-DevToolsASG-199RU6P9O1375
+  AutoScalingGroupName: sooty-DevToolsASG-199RU6P9O1375
+  AvailabilityZones: [eu-central-1a]
+  CreatedTime: 2018-05-18 17:11:13.571000+00:00
+  DefaultCooldown: 300
+  DesiredCapacity: 2
+  EnabledMetrics: []
+  HealthCheckGracePeriod: 600
+  HealthCheckType: EC2
+  Instances:
+  - {AvailabilityZone: eu-central-1a, HealthStatus: Healthy, InstanceId: i-00ed09c06862f64eb,
+    LaunchConfigurationName: sooty-DevToolsInstanceLaunchConfig-1RS4F6JY5F93M, LifecycleState: InService,
+    ProtectedFromScaleIn: false}
+  LaunchConfigurationName: sooty-DevToolsInstanceLaunchConfig-1RS4F6JY5F93M
+  LoadBalancerNames: []
+  MaxSize: 100
+  MinSize: 1
+  NewInstancesProtectedFromScaleIn: false
+  ServiceLinkedRoleARN: arn:aws:iam::424242424242:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling
+  SuspendedProcesses: []
+  Tags:
+  - {Key: CreatedWith, PropagateAtLaunch: true, ResourceId: sooty-DevToolsASG-199RU6P9O1375,
+    ResourceType: auto-scaling-group, Value: create-stack.sh}
+  - {Key: Name, PropagateAtLaunch: true, ResourceId: sooty-DevToolsASG-199RU6P9O1375,
+    ResourceType: auto-scaling-group, Value: sooty Dev tools}
+  - {Key: 'aws:cloudformation:logical-id', PropagateAtLaunch: true, ResourceId: sooty-DevToolsASG-199RU6P9O1375,
+    ResourceType: auto-scaling-group, Value: DevToolsASG}
+  - {Key: 'aws:cloudformation:stack-id', PropagateAtLaunch: true, ResourceId: sooty-DevToolsASG-199RU6P9O1375,
+    ResourceType: auto-scaling-group, Value: 'arn:aws:cloudformation:eu-central-1:424242424242:stack/sooty/479d5820-5842-11e8-88f7-500c52a6ce62'}
+  - {Key: 'aws:cloudformation:stack-name', PropagateAtLaunch: true, ResourceId: sooty-DevToolsASG-199RU6P9O1375,
+    ResourceType: auto-scaling-group, Value: sooty}
+  TargetGroupARNs: []
+  TerminationPolicies: [Default]
+  VPCZoneIdentifier: subnet-dfffd2b4
+ResponseMetadata:
+  HTTPHeaders: {content-length: '3846', content-type: text/xml, date: 'Sat, 02 Jun
+      2018 15:17:07 GMT', vary: Accept-Encoding, x-amzn-requestid: 040b53f1-6678-11e8-afdb-e5340b9a03fb}
+  HTTPStatusCode: 200
+  RequestId: 040b53f1-6678-11e8-afdb-e5340b9a03fb
+  RetryAttempts: 0
